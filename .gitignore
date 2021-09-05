@@ -1,0 +1,6 @@
+.vs
+x64/
+CUDA_NPP_samples/*.jpg
+CUDA_NPP_samples/*.png
+CUDA_NPP_samples/x64
+CUDA_NPP_samples/*.yuv
