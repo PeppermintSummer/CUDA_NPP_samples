@@ -48,7 +48,7 @@ int main()
 
 	size_t srcSize = width * height * 3 / 2;
 	uint8_t* pInData = new uint8_t[srcSize];
-	Npp8u* pYUV_dev; //uchar
+	Npp8u* pYUV_dev[3]; //uchar
 	Npp8u* pRGB_dev;
 	cudaMalloc((void**)&pYUV_dev, width * height * 3 * sizeof(Npp8u));
 	cudaMalloc((void**)&pRGB_dev, width * height * 3 * sizeof(Npp8u));
@@ -80,7 +80,7 @@ int main()
 		 */
 
 		//auto ret = nppiYUVToRGB_8u_P3R((const Npp8u * const*)pYUV_dev, width * 3, &pRGB_dev,width*3, nppSize);
-		auto ret = nppiYUVToRGB_8u_C3R(pYUV_dev, width * 3, pRGB_dev, width*3, nppSize);
+		auto ret = nppiYUV420ToRGB_8u_P3R(pYUV_dev, width * 3, pRGB_dev, width*3, nppSize);
 		if (ret != 0)
 		{
 			printf("nppiYUVToRGB_8u_C3R error:%d\n", ret);

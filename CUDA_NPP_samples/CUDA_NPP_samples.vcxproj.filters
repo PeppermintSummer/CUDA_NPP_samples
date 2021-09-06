@@ -23,5 +23,13 @@
     <ClInclude Include="CUDA_npp_resize.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CUDA_color_conversion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CUDA_color_conversion.cu">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

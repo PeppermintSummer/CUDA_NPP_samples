@@ -147,7 +147,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CUDA_color_conversion.h" />
     <ClInclude Include="CUDA_npp_resize.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CUDA_color_conversion.cu" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
