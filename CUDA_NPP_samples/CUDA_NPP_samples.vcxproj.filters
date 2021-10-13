@@ -31,5 +31,8 @@
     <None Include="CUDA_color_conversion.cu">
       <Filter>源文件</Filter>
     </None>
+    <None Include="resize_gpu.cu">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

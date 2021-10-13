@@ -39,8 +39,7 @@ static void copyYUVCPU2GPU(Npp8u*pDst, uint8_t*pSrcY, uint8_t*pSrcU, uint8_t*pSr
 	delete[] pTemp;
 }
 
-
-int main()
+int test()
 {
 	const char* file_yuv = "out240x128.yuv";
 	int width = 240;
@@ -61,13 +60,13 @@ int main()
 	}
 
 	int i = 0;
-	while (fread(pInData,1,srcSize,fp) == srcSize) //YUV 422
+	while (fread(pInData, 1, srcSize, fp) == srcSize) //YUV 422
 	{
 		uint8_t* pY = pInData;
 		uint8_t* pU = pY + width * height;
 		uint8_t* pV = pU + width * height / 4;
 
-		copyYUVCPU2GPU(pYUV_dev, pY, pU, pV, width, height);
+		//copyYUVCPU2GPU(pYUV_dev, pY, pU, pV, width, height);
 		NppiSize nppSize = { width,height };
 		printf("[%s:%d],nppSize(%d,%d)\n", __FILE__, __LINE__, nppSize.width, nppSize.height);
 
@@ -79,13 +78,13 @@ int main()
 		 YUV420SP, Y分量平面格式，UV打包格式, 即NV12。 NV12与NV21类似，U 和 V 交错排列,不同在于UV顺序。
 		 */
 
-		//auto ret = nppiYUVToRGB_8u_P3R((const Npp8u * const*)pYUV_dev, width * 3, &pRGB_dev,width*3, nppSize);
-		auto ret = nppiYUV420ToRGB_8u_P3R(pYUV_dev, width * 3, pRGB_dev, width*3, nppSize);
-		if (ret != 0)
-		{
-			printf("nppiYUVToRGB_8u_C3R error:%d\n", ret);
-			return 0;
-		}
+		 //auto ret = nppiYUVToRGB_8u_P3R((const Npp8u * const*)pYUV_dev, width * 3, &pRGB_dev,width*3, nppSize);
+		//auto ret = nppiYUV420ToRGB_8u_P3R(pYUV_dev, width * 3, pRGB_dev, width * 3, nppSize);
+		//if (ret != 0)
+		//{
+		//	printf("nppiYUVToRGB_8u_C3R error:%d\n", ret);
+		//	return 0;
+		//}
 
 		cv::Mat img(height, width, CV_8UC3);
 		cudaMemcpy(img.data, pRGB_dev, width*height * 3, cudaMemcpyDeviceToHost);
@@ -93,7 +92,7 @@ int main()
 		cv::imwrite(str1.c_str(), img);
 		//cv::waitKey(1);
 		i++;
-		if (i>5)
+		if (i > 5)
 		{
 			break;
 		}
@@ -102,6 +101,14 @@ int main()
 	cudaFree(pYUV_dev);
 	cudaFree(pRGB_dev);
 	fclose(fp);
+}
+
+
+int main()
+{
+	//printf("1");
+
+
 
 	return 0;
 }
