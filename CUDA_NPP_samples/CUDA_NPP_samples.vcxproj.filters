@@ -13,10 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\warpAffine">
+      <UniqueIdentifier>{1c45da6f-2cbf-41f8-b847-4d390bc48d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\warpAffine">
+      <UniqueIdentifier>{a2ce3246-621b-49ee-b19a-047717d5a01d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="warpAffine_cpp\xt_cuda.cpp">
+      <Filter>源文件\warpAffine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +35,9 @@
     <ClInclude Include="CUDA_color_conversion.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="warpAffine_cpp\xt_cuda.h">
+      <Filter>头文件\warpAffine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="CUDA_color_conversion.cu">
@@ -34,5 +46,13 @@
     <None Include="resize_gpu.cu">
       <Filter>源文件</Filter>
     </None>
+    <None Include="warpAffine_cpp\hello_cuda.cu">
+      <Filter>源文件\warpAffine</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="warpAffine_cpp\WarpAffine.cu">
+      <Filter>源文件\warpAffine</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>

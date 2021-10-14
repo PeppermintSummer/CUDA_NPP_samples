@@ -54,6 +54,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.1.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -145,16 +146,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="warpAffine_cpp\xt_cuda.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CUDA_color_conversion.h" />
     <ClInclude Include="CUDA_npp_resize.h" />
+    <ClInclude Include="warpAffine_cpp\xt_cuda.h" />
   </ItemGroup>
   <ItemGroup>
+    <CudaCompile Include="warpAffine_cpp\WarpAffine.cu" />
     <None Include="CUDA_color_conversion.cu" />
     <None Include="resize_gpu.cu" />
+    <CudaCompile Include="warpAffine_cpp\hello_cuda.cu">
+      <FileType>Document</FileType>
+    </CudaCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.1.targets" />
   </ImportGroup>
 </Project>

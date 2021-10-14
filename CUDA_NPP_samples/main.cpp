@@ -8,6 +8,12 @@
 #include <nppi.h>
 
 #include "CUDA_npp_resize.h"
+#include "warpAffine_cpp/xt_cuda.h"
+
+//cuda核函数是需要声明的=_=
+void hello_cuda();
+void test_stream();
+void warpAffine();
 
 static void copyYUVCPU2GPU(Npp8u*pDst, uint8_t*pSrcY, uint8_t*pSrcU, uint8_t*pSrcV, int width, int height)
 {
@@ -107,8 +113,19 @@ int test()
 int main()
 {
 	//printf("1");
+	//cv::Mat image = cv::imread("cat1.png");
+	//printf("image size = %d x %d\n", image.cols, image.rows);
+	//cv::imshow("cat", image);
+	//cv::waitKey(3000);
 
+	//void* ptr = nullptr;
+	//checkRuntime(cudaMalloc(&ptr, 32));
+	//printf("ptr = %d\n", ptr); // 77594624
+	//cudaFree(&ptr);
 
+	//hello_cuda();
+	//test_stream();
+	warpAffine();
 
 	return 0;
 }
